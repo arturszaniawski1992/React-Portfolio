@@ -1,28 +1,24 @@
 import React, {Component} from 'react';
 
 const TITLES = [
-  'a software engineer',
-  'a guitar player',
-  'a civil engineer'
-];
+  'I am a Software Engineer',
+  'and passionate of Java',
+  ];
 
 const HOBBYS = [
   'I like study new technologies',
-  'I like travelling around the world',
-  'I like spending time with my family',
 ];
 
 const PERSONAL_INFO = [
-  'I am 27 years old an come from Brazil',
-  'I am 61 years old an come from Scotland',
-  'I am 32 years old an come from Poland',
+  'I am 27 years old an come from Poland',
+
 ];
 
 class Title extends Component {
   state = {
     titleIndex: (Math.floor(Math.random() * 2 + 1)),
-    hobbyIndex: (Math.floor(Math.random() * 2 + 1)),
-    personalInfoIndex: (Math.floor(Math.random() * 2 + 1)),
+    hobbyIndex: 0,
+    personalInfoIndex: 0,
   };
 
   componentDidMount() {
@@ -49,13 +45,12 @@ class Title extends Component {
 
     return (
       <div>
-        <p>I am {title}</p>
+        <p>{title}</p>
         <p>{hobby}</p>
         <p>{personalInfo}</p>
       </div>
     )
   }
-
 }
 
 export default Title;

@@ -1,18 +1,39 @@
 import React, {Component} from 'react';
 
 class Jokes extends Component {
-  state = {joke: {}};
+  state = {joke: {}, jokes: []};
 
   componentDidMount() {
     fetch('https://official-joke-api.appspot.com/random_joke')
-      .then( response =>console.log('response', response));
+      .then(response => response.json())
+      .then(json => this.setState({joke: json}));
   }
-  render() {
-    return(
-      <div>
 
+  fetchJokes = () => {
+    fetch('https://official-joke-api.appspot.com/random_ten')
+      .then(response => response.json())
+      .then(json => this.setState({jokes: json}))
+  }
+
+  render() {
+    const {setup, punchline} = this.state.joke;
+
+    return (
+      <div>
+        {setup}<br/><em>{punchline}</em>
+        <hr/>
+        <h3>Want ten new jokes?</h3>
+        <button onClick={this.fetchJokes}>Click me!</button>
+        {
+          this.state.jokes.map(joke=> {
+            const {id, setup, punchline}= joke;
+            return <p key={id}>{setup} <em>{punchline}</em></p>
+          })
+        }
       </div>
-  )}
+
+    )
+  }
 }
 
 export default Jokes;
