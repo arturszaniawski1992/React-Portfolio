@@ -1,7 +1,9 @@
 import React from 'react';
 import PROJECTS from '../data/projects';
+import {Link} from "react-router-dom";
+import Header from "./Header";
 
-const Project = props => {
+const Project = (props) => {
 
   const {title, image, description, link} = props.project;
 
@@ -18,6 +20,7 @@ const Project = props => {
 const Projects = () =>
   (
     <div>
+      <Header/>
       <h3> Highlighted projects</h3>
       <div>
         {
@@ -27,7 +30,11 @@ const Projects = () =>
             );
           })
         }
-      </div>
+        <br/>
+        <br/>
+        <Link to='/'>
+          <button className='btn-danger'>Back to menu</button>
+        </Link>      </div>
     </div>
   )
 

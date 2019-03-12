@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
 import Projects from "./Projects";
 import SocialProfiles from "./SocialProfiles";
-import profile from '../assets/github_icon.png';
+import profile from '../assets/face.png';
 import Title from "./Title";
-import Jokes from "./Jokes";
+import Header from "./Header";
+
 
 class App extends Component {
 
@@ -15,8 +16,12 @@ class App extends Component {
 
 
   render() {
+
     return (
       <div>
+        <div>
+          <Header/>
+        </div>
         <img src={profile} className="profile" alt="Cinque Terre"/>
         <Title/>
         {
@@ -29,16 +34,15 @@ class App extends Component {
             </div>
           ) : (
             <div>
-              <button  type="button" className="btn btn-info" onClick={this.toggleDisplayBio}>Read more</button>
+              <button type="button" className="btn btn-info" onClick={this.toggleDisplayBio}>Read more</button>
             </div>
           )
         }
         <hr/>
-        <Projects />
+        <Projects/>
         <hr/>
-        <SocialProfiles />
-      <hr/>
-      <Jokes/>
+        <SocialProfiles/>
+        <hr/>
       </div>
     )
   }
